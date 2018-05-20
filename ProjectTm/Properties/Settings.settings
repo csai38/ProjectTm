@@ -1,7 +1,38 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ProjectTm.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ProjectTm_EppmWs_AuthenticationService_AuthenticationService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://eppm.tks.local:8206/p6ws/services/AuthenticationService</Value>
+    </Setting>
+    <Setting Name="ProjectTm_EppmWs_EPSService_EPSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://eppm.tks.local:8206/p6ws/services/EPSService</Value>
+    </Setting>
+    <Setting Name="EppmWsUrl" Type="(Web Service URL)" Scope="User">
+      <Value Profile="(Default)">http://tks.ms:18206</Value>
+    </Setting>
+    <Setting Name="ProjectTm_EppmWs_ProjectService_ProjectService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://eppm.tks.local:8206/p6ws/services/V1/ProjectService</Value>
+    </Setting>
+    <Setting Name="ptmCs" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;User Id=projecttm;Password=123456;Host=localhost;Database=projecttm;Unicode=True;Persist Security Info=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;Devart.Data.MySql&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">User Id=projecttm;Password=123456;Host=localhost;Database=projecttm;Unicode=True;Persist Security Info=True</Value>
+    </Setting>
+    <Setting Name="ProjectTm_EppmWs_ActivityService_ActivityService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://tks.ms:18206/p6ws/services/ActivityService</Value>
+    </Setting>
+    <Setting Name="ProjectTm_EppmWs_WBSService_WBSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://tks.ms:18206/p6ws/services/WBSService</Value>
+    </Setting>
+    <Setting Name="ProjectTm_EppmWs_CalendarService_CalendarService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.10.30:8206/p6ws/services/CalendarService</Value>
+    </Setting>
+    <Setting Name="testParams" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%EppmWsUrl%</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

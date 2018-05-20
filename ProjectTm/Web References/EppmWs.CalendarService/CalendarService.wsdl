@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/Primavera/P6/WS/Calendar/V1" xmlns:intgfault="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" name="CalendarService" targetNamespace="http://xmlns.oracle.com/Primavera/P6/WS/Calendar/V1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Primavera/P6/WS/Calendar/V1">
+      <xsd:import schemaLocation="http://192.168.10.30:8206/p6ws/services/CalendarService?xsd=IntegrationFault.xsd" namespace="http://xmlns.oracle.com/Primavera/P6/WS/IntegrationFaultType/V1" />
+      <xsd:complexType name="CreateCalendars">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Calendar" type="tns:Calendar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateCalendars" type="tns:CreateCalendars" />
+      <xsd:element name="CreateCalendarsResponse" type="tns:CreateCalendarsResponse" />
+      <xsd:complexType name="ReadCalendars">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:CalendarFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+          <xsd:element minOccurs="0" name="OrderBy" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Calendar" type="tns:Calendar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadCalendars" type="tns:ReadCalendars" />
+      <xsd:element name="ReadCalendarsResponse" type="tns:ReadCalendarsResponse" />
+      <xsd:simpleType name="CalendarFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="BaseCalendarObjectId" />
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="HolidayOrExceptions" />
+          <xsd:enumeration value="HoursPerDay" />
+          <xsd:enumeration value="HoursPerMonth" />
+          <xsd:enumeration value="HoursPerWeek" />
+          <xsd:enumeration value="HoursPerYear" />
+          <xsd:enumeration value="IsBaseline" />
+          <xsd:enumeration value="IsDefault" />
+          <xsd:enumeration value="IsPersonal" />
+          <xsd:enumeration value="IsTemplate" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="ProjectId" />
+          <xsd:enumeration value="ProjectObjectId" />
+          <xsd:enumeration value="StandardWorkWeek" />
+          <xsd:enumeration value="Type" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateCalendars">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ReplaceHolidayOrExceptions" type="xsd:boolean" />
+          <xsd:element maxOccurs="unbounded" name="Calendar" type="tns:Calendar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateCalendars" type="tns:UpdateCalendars" />
+      <xsd:element name="UpdateCalendarsResponse" type="tns:UpdateCalendarsResponse" />
+      <xsd:complexType name="DeleteCalendars">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DeleteWithReplacement">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+                <xsd:element name="ReplacementObjectId" type="xsd:int" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteCalendars" type="tns:DeleteCalendars" />
+      <xsd:element name="DeleteCalendarsResponse" type="tns:DeleteCalendarsResponse" />
+      <xsd:complexType name="Calendar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="BaseCalendarObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HoursPerDay">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="1.0" />
+                <xsd:maxInclusive value="24.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HoursPerMonth">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="1.0" />
+                <xsd:maxInclusive value="744.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HoursPerWeek">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="1.0" />
+                <xsd:maxInclusive value="168.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HoursPerYear">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="1.0" />
+                <xsd:maxInclusive value="8784.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="IsBaseline" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="IsDefault" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="IsPersonal" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="IsTemplate" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ProjectId">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ProjectObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Type">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Global" />
+                <xsd:enumeration value="Project" />
+                <xsd:enumeration value="Resource" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="StandardWorkWeek">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="7" maxOccurs="7" name="StandardWorkHours">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element name="DayOfWeek">
+                        <xsd:simpleType>
+                          <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="Sunday" />
+                            <xsd:enumeration value="Monday" />
+                            <xsd:enumeration value="Tuesday" />
+                            <xsd:enumeration value="Wednesday" />
+                            <xsd:enumeration value="Thursday" />
+                            <xsd:enumeration value="Friday" />
+                            <xsd:enumeration value="Saturday" />
+                          </xsd:restriction>
+                        </xsd:simpleType>
+                      </xsd:element>
+                      <xsd:element minOccurs="0" maxOccurs="12" name="WorkTime">
+                        <xsd:complexType>
+                          <xsd:sequence>
+                            <xsd:element name="Finish" type="xsd:time" />
+                            <xsd:element name="Start" type="xsd:time" />
+                          </xsd:sequence>
+                        </xsd:complexType>
+                      </xsd:element>
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HolidayOrExceptions">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="HolidayOrException">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element name="Date" type="xsd:dateTime" />
+                      <xsd:element minOccurs="0" maxOccurs="12" name="WorkTime">
+                        <xsd:complexType>
+                          <xsd:sequence>
+                            <xsd:element name="Finish" type="xsd:time" />
+                            <xsd:element name="Start" type="xsd:time" />
+                          </xsd:sequence>
+                        </xsd:complexType>
+                      </xsd:element>
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IntegrationFault">
+    <wsdl:part name="fault" element="intgfault:IntegrationFault" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalendarsResponse">
+    <wsdl:part name="result" element="tns:ReadCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCalendarsResponse">
+    <wsdl:part name="result" element="tns:UpdateCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCalendars">
+    <wsdl:part name="params" element="tns:DeleteCalendars" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCalendarsResponse">
+    <wsdl:part name="result" element="tns:DeleteCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCalendars">
+    <wsdl:part name="params" element="tns:UpdateCalendars" />
+  </wsdl:message>
+  <wsdl:message name="CreateCalendars">
+    <wsdl:part name="params" element="tns:CreateCalendars" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalendars">
+    <wsdl:part name="params" element="tns:ReadCalendars" />
+  </wsdl:message>
+  <wsdl:message name="CreateCalendarsResponse">
+    <wsdl:part name="result" element="tns:CreateCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CalendarPortType">
+    <wsdl:operation name="CreateCalendars">
+      <wsdl:input name="CreateCalendarsRequest" message="tns:CreateCalendars" />
+      <wsdl:output name="CreateCalendarsResponse" message="tns:CreateCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalendars">
+      <wsdl:input name="ReadCalendarsRequest" message="tns:ReadCalendars" />
+      <wsdl:output name="ReadCalendarsResponse" message="tns:ReadCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCalendars">
+      <wsdl:input name="UpdateCalendarsRequest" message="tns:UpdateCalendars" />
+      <wsdl:output name="UpdateCalendarsResponse" message="tns:UpdateCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCalendars">
+      <wsdl:input name="DeleteCalendarsRequest" message="tns:DeleteCalendars" />
+      <wsdl:output name="DeleteCalendarsResponse" message="tns:DeleteCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalendarPortBinding" type="tns:CalendarPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCalendars">
+      <soap:operation soapAction="CreateCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalendars">
+      <soap:operation soapAction="ReadCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCalendars">
+      <soap:operation soapAction="UpdateCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCalendars">
+      <soap:operation soapAction="DeleteCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalendarService">
+    <wsdl:port name="CalendarPort" binding="tns:CalendarPortBinding">
+      <soap:address location="http://192.168.10.30:8206/p6ws/services/CalendarService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
