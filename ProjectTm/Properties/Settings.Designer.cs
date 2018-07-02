@@ -68,17 +68,6 @@ namespace ProjectTm.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("User Id=projecttm;Password=123456;Host=localhost;Database=projecttm;Unicode=True;" +
-            "Persist Security Info=True")]
-        public string ptmCs {
-            get {
-                return ((string)(this["ptmCs"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://tks.ms:18206/p6ws/services/ActivityService")]
         public string ProjectTm_EppmWs_ActivityService_ActivityService {
@@ -107,15 +96,23 @@ namespace ProjectTm.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%EppmWsUrl%")]
-        public string testParams {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\ProjectPm.accdb")]
+        public string ProjectPmCS {
             get {
-                return ((string)(this["testParams"]));
+                return ((string)(this["ProjectPmCS"]));
             }
-            set {
-                this["testParams"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://tks.ms:18206/p6ws/services/RelationshipService")]
+        public string ProjectTm_EppmWs_DepService_RelationshipService {
+            get {
+                return ((string)(this["ProjectTm_EppmWs_DepService_RelationshipService"]));
             }
         }
     }

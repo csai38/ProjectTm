@@ -84,13 +84,19 @@
     <Compile Include="LoginEppm.Designer.cs">
       <DependentUpon>LoginEppm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PtmDs.Designer.cs">
+    <Compile Include="PpDs.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PtmDs.xsd</DependentUpon>
+      <DependentUpon>PpDs.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PpmSync.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PpmSync.Designer.cs">
+      <DependentUpon>PpmSync.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Web References\EppmWs.ActivityService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -103,6 +109,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\EppmWs.CalendarService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\EppmWs.DepService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -128,6 +139,9 @@
     <EmbeddedResource Include="LoginEppm.resx">
       <DependentUpon>LoginEppm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PpmSync.resx">
+      <DependentUpon>PpmSync.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -139,6 +153,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="PpDs.xsc">
+      <DependentUpon>PpDs.xsd</DependentUpon>
+    </None>
+    <None Include="PpDs.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PpDs.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PpDs.xss">
+      <DependentUpon>PpDs.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,17 +173,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="PtmDs.xsc">
-      <DependentUpon>PtmDs.xsd</DependentUpon>
-    </None>
-    <None Include="PtmDs.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PtmDs.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PtmDs.xss">
-      <DependentUpon>PtmDs.xsd</DependentUpon>
-    </None>
     <None Include="Web References\EppmWs.ActivityService\Activity.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -220,6 +234,23 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\EppmWs.CalendarService\UpdateCalendarsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EppmWs.DepService\DeleteRelationshipsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EppmWs.DepService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\EppmWs.DepService\Relationship.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EppmWs.DepService\RelationshipService.wsdl" />
+    <None Include="Web References\EppmWs.DepService\RelationshipService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\EppmWs.DepService\UpdateRelationshipsResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\EppmWs.EPSService\DeleteEPSResponse.datasource">
@@ -302,7 +333,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ppm.png" />
@@ -366,6 +399,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>ProjectTm_EppmWs_ActivityService_ActivityService</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://tks.ms:18206/p6ws/services/RelationshipService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\EppmWs.DepService\</RelPath>
+      <UpdateFromURL>http://tks.ms:18206/p6ws/services/RelationshipService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ProjectTm_EppmWs_DepService_RelationshipService</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://tks.ms:18206/p6ws/services/WBSService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\EppmWs.WBSService\</RelPath>
@@ -380,6 +424,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProjectPm.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

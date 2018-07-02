@@ -51,7 +51,6 @@
             // 
             this.dbCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dbCmb.Enabled = false;
-            this.dbCmb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dbCmb.FormattingEnabled = true;
             this.dbCmb.Location = new System.Drawing.Point(124, 16);
             this.dbCmb.Name = "dbCmb";

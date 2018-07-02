@@ -32,9 +32,7 @@ namespace ProjectTm
             //taskTypeDataGridViewTextBoxColumn
 
             // TODO: данная строка кода позволяет загрузить данные в таблицу "ptmDs.pcm_milstones". При необходимости она может быть перемещена или удалена.
-            this.pcm_milstonesTableAdapter.Fill(this.ptmDs.pcm_milstones);
-            MessageBox.Show(Properties.Settings.Default.testParams);
-
+            
         }
 
         private void eppmConnectBtn_Click(object sender, EventArgs e)
@@ -209,8 +207,8 @@ namespace ProjectTm
                     taskService.Url = String.Format("{0}/p6ws/services/ActivityService", Properties.Settings.Default.EppmWsUrl);
                     taskService.CookieContainer = eppmConnection.sessionCookie;
                     ReadAllActivitiesByWBS readTasks = new ReadAllActivitiesByWBS();
-                    readTasks.Filter = String.Format("Type IN ('{0}','{1}')", "Start Milestone", "Finish Milestone");
-                    //readTasks.Filter = String.Format("Type = '{0}'", "Start Milestone");
+                    //readTasks.Filter = String.Format("Type IN ('{0}','{1}')", "Start Milestone", "Finish Milestone");
+
                     readTasks.Field = new ActivityFieldType[7] { ActivityFieldType.ProjectObjectId, ActivityFieldType.Id, ActivityFieldType.Type, ActivityFieldType.StartDate, ActivityFieldType.FinishDate, ActivityFieldType.WBSName, ActivityFieldType.Name };
                     Activity[] tasks = null;
                     foreach(int wbsId in selProjects)
@@ -224,7 +222,7 @@ namespace ProjectTm
                             {
                                 string tType = (t.Type == ActivityType.FinishMilestone) ? "E" : "S";
                                 DateTime aDate = (t.Type == ActivityType.FinishMilestone) ? t.FinishDate : t.StartDate;
-                                ptmDs.pcm_milstones.Addpcm_milstonesRow(t.ProjectObjectId, t.Id, tType, String.Format("{0} :: {1}", t.WBSName, t.Name), aDate, aDate, 0);
+                                //ptmDs.pcm_milstones.Addpcm_milstonesRow(t.ProjectObjectId, t.Id, tType, String.Format("{0} :: {1}", t.WBSName, t.Name), aDate, aDate, 0);
                             }
                         }
                     }
@@ -276,11 +274,17 @@ namespace ProjectTm
             EppmWs.CalendarService.Calendar calendar = new EppmWs.CalendarService.Calendar();
             EppmWs.CalendarService.CalendarStandardWorkHours workHours = new EppmWs.CalendarService.CalendarStandardWorkHours();
             EppmWs.CalendarService.CalendarStandardWorkHoursWorkTime workTime = new EppmWs.CalendarService.CalendarStandardWorkHoursWorkTime();
-            //workTime.
-            ProjectService ps = new ProjectService();
-            CopyProject cp = new CopyProject();
-            
-            
+        }
+
+        private void calckCriticalTasks_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void eppmSyncTool_Click(object sender, EventArgs e)
+        {
+            PpmSync win = new PpmSync(this.eppmConnection);
+            win.Show();
         }
     }
 }
